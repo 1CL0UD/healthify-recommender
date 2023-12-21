@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: healthify-recommender
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: healthify-recommender
+  template:
+    metadata:
+      labels:
+        app: healthify-recommender
+    spec:
+      containers:
+        - name: healthify-recommender
+          image: asia-southeast2-docker.pkg.dev/healthifyme-407721/healthify-recommender/healthify-recommender:v2
+          ports:
+            - containerPort: 8090
